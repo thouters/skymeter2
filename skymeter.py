@@ -44,7 +44,7 @@ class Meter:
         for m in filter(lambda p: s.count(p[0]),self.unitmap.iteritems()):
            c += float(s[s.index(m[0]) -1]) * m[1]
         return c
-     
+
     def num2string(self,n):
         s = "%d GB" % (n/1024)
         if (n % 1024):
@@ -65,7 +65,7 @@ class skymeter:
     time = None
     timeformat = "%a, %d %b %Y %H:%M:%S"
     _version = "2.1.0"
-    
+
     def __init__(self):
         try:
             f = open(os.path.expanduser(self.conffile),"r")
@@ -82,7 +82,7 @@ class skymeter:
     def testCreds(self):
         # FIXME: test more thoroughly!
         if self.username == "" or self.password == "":
-           raise SkymeterError("Invalid Credentials!") 
+           raise SkymeterError("Invalid Credentials!")
 
     def savecred(self):
         self.testCreds()
@@ -91,7 +91,7 @@ class skymeter:
             f.write("user %s\npass %s" %(self.username,self.password))
             f.close()
         except:
-           raise SkymeterError("File I/O error") 
+           raise SkymeterError("File I/O error")
 
     def GetData(self):
         self.data = []
@@ -123,7 +123,7 @@ class skymeter:
             raise SkymeterError("Parse failure")
         self.time = time.localtime()
         return self.data
-    
+
     def prettyPrint(self):
         now = time.strftime(self.timeformat, self.time)
         s = "Volume meters for %s on %s\n" % (self.username, now)
@@ -136,4 +136,4 @@ if __name__ == '__main__':
         s.GetData()
         print s.prettyPrint()
     except SkymeterError, e:
-        print "An error occured: %s" % e.error 
+        print "An error occured: %s" % e.error
