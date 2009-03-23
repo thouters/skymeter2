@@ -97,7 +97,7 @@ class skymeter:
         self.data = []
         self.testCreds()
 
-        baseurl = "https://e-care.skynet.be/index.cfm"
+        baseurl = "https://admit.belgacom.be/ecare-slf/index.cfm"
         postdata = { "form_login":self.username, "form_password":self.password,
                      "Langue_Id":"2", "fuseaction":"CheckLoginConnection" }
         try:
